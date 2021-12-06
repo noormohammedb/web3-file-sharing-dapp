@@ -26,13 +26,22 @@ class Main extends Component {
                 <br />
                 {/* <input type='' name='' placeholder='' ref={ } /> */}
                 <input type='text' name='file-desc' placeholder='description' ref={(inp) => { this.fileDescription = inp; }} required />
-                <input type='file' name='file-obj' onChange={this.props.captureFile} id='file-inp' />
+                <input type='file' name='file-obj' onChange={this.props.captureFile} id='file-inp' required />
                 <button type='submit' > upload </button>
               </form>
 
 
               {/* Creatining uploading card ... */}
               {/* Uploading file... */}
+              {this.props.ipfsHash ?
+                // <a href={`https://ipfs.infura.io/ipfs/${this.props.ipfsHash}`} target='_blank' >
+                <a href='' target=''>
+                  <h3 onClick={() => { window.open(`https://ipfs.infura.io/ipfs/${this.props.ipfsHash}`, "_blank"); }
+                  }>ipfs://{this.props.ipfsHash}</h3>
+                </a>
+                // </a>
+                : null}
+
               <p>&nbsp;</p>
               {/* Create Table*/}
               <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px' }}>
@@ -41,8 +50,8 @@ class Main extends Component {
               </table>
             </div>
           </main>
-        </div>
-      </div>
+        </div >
+      </div >
     );
   }
 }

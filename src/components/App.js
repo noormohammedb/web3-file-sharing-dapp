@@ -1,4 +1,5 @@
 import DStorage from '../abis/DStorage.json'
+// import DStorage from '../contracts/artifacts/DStorage.json'
 import React, { Component } from 'react';
 import Navbar from './Navbar'
 import Main from './Main'
@@ -55,8 +56,8 @@ class App extends Component {
 
       //Load files&sort by the newest
       for (var i = fileCount; i >= 1; i--) {
-        const file = await dstorage.methods.files(i).call();
-        this.setState({ files: [...this.state.files, file] });
+        const filesFromChain = await dstorage.methods.allFiles(i).call();
+        this.setState({ files: [...this.state.files, filesFromChain] });
       }
     }
     else {
@@ -95,22 +96,30 @@ class App extends Component {
         return;
       }
       console.log("IPFS response: ", result);
-      this.setState({ loading: true });
+      this.setState({ loading: true, ipfsHash: result[0].path });
 
-      if (this.state.type == '') {
+      if (this.state.type === '') {
         this.setState({ type: 'none' })
       }
 
+      this.state.dstorage.methods.uploadFile(result[0].hash, result[0].size, this.state.type, this.state.name, description).send({ from: this.state.account }).on('transactionHash', (hash) => {
+        this.setState({
+          loading: false,
+          type: null,
+          name: null,
+        })
+        console.log("transaction hash: ", hash);
+        window.alert("reload in 5 sec");
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
+
+      }).on('error', (e) => {
+        console.log("error: ", e);
+        alert("error");
+        this.setState({ loading: false });
+      });
     });
-
-    //Check If error
-    //Return error
-
-    //Set state to loading
-
-    //Assign value for the file without extension
-
-    //Call smart contract uploadFile function 
 
   }
 
@@ -124,6 +133,7 @@ class App extends Component {
       loading: false,
       type: null,
       name: null,
+      ipfsHash: null,
     }
     //Bind functions
   }
@@ -138,6 +148,7 @@ class App extends Component {
             files={this.state.files}
             captureFile={this.captureFile}
             uploadFile={this.uploadFile}
+            ipfsHash={this.state.ipfsHash}
           />
         }
       </div>
