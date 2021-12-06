@@ -6,6 +6,9 @@ import Web3 from 'web3';
 import './App.css';
 
 //Declare IPFS
+const ipfsClient = require("ipfs-http-client");
+const ipfs = ipfsClient({ host: "ipfs.infura.io", port: 5001, protocol: "https" });
+
 
 class App extends Component {
 
@@ -65,6 +68,20 @@ class App extends Component {
 
   // Get file from user
   captureFile = event => {
+    event.preventDefault();
+
+    const file = event.target.files[0];
+    const reader = new window.FileReader();
+
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => {
+      this.setState({
+        buffer: Buffer(reader.result),
+        type: file.type,
+        name: file.name
+      })
+      console.log('buffer: ', this.state.buffer);
+    }
   }
 
 
@@ -72,6 +89,19 @@ class App extends Component {
   uploadFile = description => {
 
     //Add file to the IPFS
+    ipfs.add(this.state.buffer, (err, result) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log("IPFS response: ", result);
+      this.setState({ loading: true });
+
+      if (this.state.type == '') {
+        this.setState({ type: 'none' })
+      }
+
+    });
 
     //Check If error
     //Return error
