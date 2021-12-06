@@ -57,7 +57,7 @@ contract('DStorage', ([deployer, uploader]) => {
 
       // FAILURE: File must have size
       await dstorage.uploadFile(fileHash, '', fileType, fileName, fileDescription, { from: uploader }).should.be.rejected;
-      
+
       // FAILURE: File must have type
       await dstorage.uploadFile(fileHash, fileSize, '', fileName, fileDescription, { from: uploader }).should.be.rejected;
 
@@ -70,7 +70,7 @@ contract('DStorage', ([deployer, uploader]) => {
 
     //check from Struct
     it('lists file', async () => {
-      const file = await dstorage.files(fileCount)
+      const file = await dstorage.allFiles(fileCount)
       assert.equal(file.fileId.toNumber(), fileCount.toNumber(), 'id is correct')
       assert.equal(file.fileHash, fileHash, 'Hash is correct')
       assert.equal(file.fileSize, fileSize, 'Size is correct')
