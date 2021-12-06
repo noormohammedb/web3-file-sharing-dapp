@@ -5,6 +5,7 @@ import moment from 'moment'
 class Main extends Component {
 
   render() {
+    console.log("render main");
     return (
       <div className="container-fluid mt-5 text-center">
         <div className="row">
@@ -46,6 +47,41 @@ class Main extends Component {
               {/* Create Table*/}
               <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px' }}>
                 {/* Set table columns */}
+                <thead>
+                  <tr>
+                    <th> id </th>
+                    <th> name </th>
+                    <th> fileDescription </th>
+                    <th> size </th>
+                    <th> time </th>
+                    <th> link </th>
+
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {
+                    this.props.files.map((file, key) => {
+                      // console.log(file);
+                      return (
+                        <tr key={key}>
+                          <td> {file.fileId} </td>
+                          <td> {file.fileName} </td>
+                          <td> {file.fileDescription} </td>
+                          <td> {convertBytes(file.fileSize)} </td>
+                          <td> {moment.unix(file.uploadTime).format("hh:mm:ss|d/mm/yy")} </td>
+                          <td>
+                            <a href={`https://ipfs.infura.io/ipfs/${file.fileHash}`} target='_blank' rel="noopener noreferrer">
+                              click me
+                            </a>
+                          </td>
+                        </tr>
+                      );
+                    })
+                    // console.log(this.props.files)
+                  }
+
+                </tbody>
                 {/* Mapping rows... */}
               </table>
             </div>

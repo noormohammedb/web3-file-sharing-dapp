@@ -1,0 +1,118 @@
+$ truffle migrate --reset --network ropsten
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'ropsten-fork'
+> Network id:      3
+> Block gas limit: 8000000 (0x7a1200)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > block number:        11564490
+   > block timestamp:     1638796633
+   > account:             0x7ed1c85faF726928BeC178e6046a9fF331b4163A
+   > balance:             5.339846773424253936
+   > gas used:            210237 (0x3353d) 
+   > gas price:           25 gwei
+   > value sent:          0 ETH
+   > total cost:          0.005255925 ETH
+
+   -------------------------------------
+   > Total cost:         0.005255925 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'DStorage'
+   --------------------
+   > block number:        11564492
+   > block timestamp:     1638796665
+   > account:             0x7ed1c85faF726928BeC178e6046a9fF331b4163A
+   > balance:             5.318497473424253936
+   > gas used:            826609 (0xc9cf1) 
+   > gas price:           25 gwei
+   > value sent:          0 ETH
+   > total cost:          0.020665225 ETH
+
+   -------------------------------------
+   > Total cost:         0.020665225 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.02592115 ETH
+
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'ropsten'
+> Network id:      3
+> Block gas limit: 8000000 (0x7a1200)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x159660bdcb9721c2d3519029380234150937016c6e9c206852b13683fbccdf84
+   > Blocks: 3            Seconds: 30
+   > contract address:    0xE16735Bf8cD27aA2385b19476ea9CAC71E787106
+   > block number:        11564495
+   > block timestamp:     1638796700
+   > account:             0x7ed1c85faF726928BeC178e6046a9fF331b4163A
+   > balance:             5.339439273424253936
+   > gas used:            226537 (0x374e9) 
+   > gas price:           25 gwei
+   > value sent:          0 ETH
+   > total cost:          0.005663425 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.005663425 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'DStorage'
+   --------------------
+   > transaction hash:    0x6dace4b8781ce3787cbdb2a87bf0943acaa0002c3ed882febda361856f7a09d2
+   > Blocks: 1            Seconds: 44
+   > contract address:    0x8e2cCa97445aF43f3c10D0493924659fc1d17367
+   > block number:        11564499
+   > block timestamp:     1638796747
+   > account:             0x7ed1c85faF726928BeC178e6046a9fF331b4163A
+   > balance:             5.316917473424253936
+   > gas used:            855109 (0xd0c45)
+   > gas price:           25 gwei
+   > value sent:          0 ETH
+   > total cost:          0.021377725 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:         0.021377725 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.02704115 ETH

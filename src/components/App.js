@@ -149,6 +149,7 @@ class App extends Component {
             captureFile={this.captureFile}
             uploadFile={this.uploadFile}
             ipfsHash={this.state.ipfsHash}
+            files={this.state.files}
           />
         }
       </div>
