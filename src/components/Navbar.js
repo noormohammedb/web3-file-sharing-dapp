@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Identicon from 'identicon.js';
+// import Identicon from 'identicon.js';
 import box from '../box.png'
 
 class Navbar extends Component {
@@ -17,7 +17,7 @@ class Navbar extends Component {
           D$t0r@g3
         </a>
         <ul className="navbar-nav px-3">
-          <b className='text-white'>{'0x0'}</b>
+          <b className='text-white'>{this.props.account}</b>
         </ul>
       </nav>
     );

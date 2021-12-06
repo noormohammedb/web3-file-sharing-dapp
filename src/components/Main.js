@@ -13,11 +13,11 @@ class Main extends Component {
               <p>&nbsp;</p>
               <h1>DStorage starter_code</h1>
               {/* Creatining uploading card ... */}
-                {/* Uploading file... */}
+              {/* Uploading file... */}
               <p>&nbsp;</p>
               {/* Create Table*/}
-              <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px'}}>
-              {/* Set table columns */}
+              <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px' }}>
+                {/* Set table columns */}
                 {/* Mapping rows... */}
               </table>
             </div>

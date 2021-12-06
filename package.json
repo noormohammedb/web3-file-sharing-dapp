@@ -46,6 +46,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "eslint": "^8.4.0",
+    "eslint-plugin-react": "^7.27.1",
     "gh-pages": "^2.2.0"
   }
 }
